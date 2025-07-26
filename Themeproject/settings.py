@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+d0yz74&7g%*d#_!i=7%#4u_%n-7b1usz-@qrl%r0=wp^v--m1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -119,7 +119,7 @@ STATIC_URL = 'static/'
 
 
 import os
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
