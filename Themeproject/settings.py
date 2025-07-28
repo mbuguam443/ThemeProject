@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Themeproject.urls'
@@ -118,19 +119,12 @@ USE_TZ = True
 
 
 
-import os
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = [BASE_DIR / "staticfiles"]
 
-# Folder where your raw static files live (during development)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # adjust 'main' to your app name
-]
-
-# Folder where Django will collect static files for production
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# For production
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
